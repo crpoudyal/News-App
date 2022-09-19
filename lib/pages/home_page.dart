@@ -30,11 +30,50 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                 itemCount: dioService.newsList.length,
                 itemBuilder: (context, item) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(dioService.newsList[item].title.toString()),
-                      subtitle: Text(
-                          dioService.newsList[item].description.toString()),
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 10,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image(
+                                image: NetworkImage(
+                                    dioService.newsList[item].urlToImage),
+                              ),
+                            ),
+                            subtitle: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  dioService.newsList[item].title.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  dioService.newsList[item].description
+                                      .toString(),
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
