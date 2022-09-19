@@ -1,3 +1,5 @@
+import 'package:dio_example/model/news_model.dart';
+import 'package:dio_example/services/dio_service.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,22 +10,53 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DioService dioService = DioService();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Dio Network call"),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, item) {
-          return Card(
-            child: ListTile(
-              title: Text("Demo"),
-              subtitle: Text("Demo"),
-            ),
-          );
-        },
-      ),
+      body: FutureBuilder<List<NewsModel>>(
+          future: dioService.getMethod(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: dioService.newsList.length,
+                itemBuilder: (context, item) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(dioService.newsList[item].title.toString()),
+                      subtitle: Text(
+                          dioService.newsList[item].description.toString()),
+                    ),
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text("Something went wrong"),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: const Text("Retry"))
+                  ],
+                ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
 }
