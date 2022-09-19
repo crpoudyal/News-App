@@ -21,13 +21,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dio Network call"),
+        title: const Text("News API"),
       ),
       body: FutureBuilder<List<NewsModel>>(
           future: dioService.getMethod(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
                 itemCount: dioService.newsList.length,
                 itemBuilder: (context, item) {
                   return Padding(
