@@ -1,4 +1,3 @@
-import 'package:dio_example/pages/home_page.dart';
 import 'package:dio_example/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

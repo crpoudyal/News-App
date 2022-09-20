@@ -29,7 +29,8 @@ class _HomePageState extends State<HomePage> {
             if (snapshot.hasData) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
+                  parent: AlwaysScrollableScrollPhysics(),
+                ),
                 itemCount: dioService.newsList.length,
                 itemBuilder: (context, item) {
                   return Padding(
