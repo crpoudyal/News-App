@@ -40,8 +40,12 @@ dependencies:
   get: ^4.6.5
   http: ^0.13.5
   url_launcher: ^6.1.5
+  json_annotation: ^4.6.0
+
 
 dev_dependencies:
+  json_serializable: ^6.3.2
+  build_runner: ^2.2.1
   flutter_test:
     sdk: flutter
 
