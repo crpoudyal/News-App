@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dio Network Call',
+      title: 'News API',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: ThemeUtils.lightTheme,

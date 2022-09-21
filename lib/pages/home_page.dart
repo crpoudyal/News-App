@@ -1,5 +1,6 @@
 import 'package:dio_example/model/news_model.dart';
 import 'package:dio_example/services/dio_service.dart';
+import 'package:dio_example/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("News API"),
       ),
+      drawer: const DrawerWidget(),
       body: FutureBuilder<List<NewsModel>>(
           future: dioService.getMethod(),
           builder: (context, snapshot) {
