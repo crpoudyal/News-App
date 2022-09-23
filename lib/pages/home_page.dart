@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio_example/controller/news_controller.dart';
 import 'package:dio_example/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,6 @@ class _HomePageState extends State<HomePage> {
                 )
               : RefreshIndicator(
                   onRefresh: () async {
-                    print("reloded");
                     newsController.getNews();
                   },
                   child: ListView.builder(
@@ -65,9 +65,10 @@ class _HomePageState extends State<HomePage> {
                                 ListTile(
                                   title: ClipRRect(
                                     borderRadius: BorderRadius.circular(12),
-                                    child: Image(
-                                      image: NetworkImage(newsController
-                                          .newsList[item].urlToImage),
+                                    child: CachedNetworkImage(
+                                      imageUrl: newsController
+                                          .newsList[item].urlToImage
+                                          .toString(),
                                     ),
                                   ),
                                   subtitle: Column(
