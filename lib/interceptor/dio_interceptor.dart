@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 class DioInterceptor extends Interceptor {
   @override
-  FutureOr<dynamic> onRequest(
+  Future<dynamic> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     handler.next(options);
     print('Header Options : ${options.method}');
@@ -25,7 +25,7 @@ class DioInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     print(
         "<-- ${response.statusCode} ${(response.requestOptions != null ? (response.requestOptions.baseUrl + response.requestOptions.path) : 'URL')}");
-    print("Headers:");
+    print("Response Headers:");
     response.headers?.forEach((k, v) => print('$k: $v'));
     print("Response: ${response.data}");
   }
