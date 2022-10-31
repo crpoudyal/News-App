@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:dio_example/pages/home_page.dart';
+import 'package:News_API/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -22,11 +22,19 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Center(
-        child: Text(
-          "News API",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              "News_API",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10,),
+            CircularProgressIndicator.adaptive(),
+          ],
         ),
       ),
     );

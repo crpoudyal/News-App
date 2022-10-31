@@ -5,13 +5,13 @@ class ThemeUtils {
       scaffoldBackgroundColor: Colors.white,
       colorScheme: const ColorScheme.light(),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.orange,
       ));
 
   static ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: Colors.black,
       colorScheme: const ColorScheme.dark(),
-      appBarTheme: const AppBarTheme(
+      appBarTheme:  const AppBarTheme(
         backgroundColor: Colors.black,
       ));
 }

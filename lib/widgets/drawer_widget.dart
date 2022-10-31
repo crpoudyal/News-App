@@ -1,4 +1,4 @@
-import 'package:dio_example/services/dio_service.dart';
+import 'package:News_API/services/dio_service.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
-import 'package:dio_example/model/news_model.dart';
-import 'package:dio_example/services/dio_service.dart';
+import 'package:News_API/model/news_model.dart';
+import 'package:News_API/services/dio_service.dart';
 import 'package:get/get.dart';
 
 class NewsController extends GetxController {

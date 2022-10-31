@@ -20,10 +20,4 @@ class NewsModel {
       _$NewsModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$NewsModelToJson(this);
-// NewsModel.fromJson(Map<String, dynamic> json) {
-//   title = json['title'];
-//   description = json['description'];
-//   urlToImage = json['urlToImage'];
-//   url = json['url'];
-// }
 }
