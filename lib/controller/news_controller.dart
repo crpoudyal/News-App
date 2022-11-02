@@ -6,8 +6,9 @@ class NewsController extends GetxController {
   final dioService = DioService();
   RxList<NewsModel> newsList = RxList();
 
+
   Future<List<NewsModel>> getNews() async {
-    final response = await dioService.getMethod();
+    final dynamic  response = await dioService.getMethod();
 
     if (response.statusCode == 200) {
       response.data["articles"].forEach((e) {
@@ -19,4 +20,5 @@ class NewsController extends GetxController {
       throw Exception("Error");
     }
   }
+
 }

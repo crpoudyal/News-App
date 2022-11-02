@@ -1,4 +1,5 @@
-import 'package:News_API/services/dio_service.dart';
+import 'package:News_API/pages/data_page.dart';
+import 'package:News_API/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatefulWidget {
@@ -9,15 +10,14 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
-  DioService dioService = DioService();
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
-          UserAccountsDrawerHeader(
+        children:  const [
+           UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.blue),
             accountName: Text(
               "crpoudyal",
@@ -33,6 +33,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             ),
             currentAccountPicture: FlutterLogo(),
           ),
+
         ],
       ),
     );

@@ -1,23 +1,22 @@
 import 'package:json_annotation/json_annotation.dart';
+part 'data_model.g.dart';
 
-part 'news_model.g.dart';
 
 @JsonSerializable()
-class NewsModel {
+class DataModel{
   late final String? title;
   late final String? description;
   late final String? urlToImage;
   late final String? url;
 
-  NewsModel({
+  DataModel({
     required this.title,
     required this.description,
     required this.urlToImage,
     required this.url,
   });
+  factory DataModel.fromJson(Map<String, dynamic> json) =>
+      _$DataModelFromJson(json);
 
-  factory NewsModel.fromJson(Map<String, dynamic> json) =>
-      _$NewsModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NewsModelToJson(this);
+  Map<String, dynamic> toJson() => _$DataModelToJson(this);
 }

@@ -1,9 +1,12 @@
+import 'package:News_API/services/dio_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:News_API/controller/news_controller.dart';
 import 'package:News_API/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'data_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,8 +28,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("News_API"),
-        centerTitle: true,
+        title: const Text("Techcrunch"),
+        actions: [
+          TextButton(onPressed: (){
+          Get.to(()=>HomePage());
+          }, child: const Text("Techcrunch")),
+
+          TextButton(onPressed: (){
+            Get.to(()=>DataPage());
+          }, child: const Text("US News"))
+        ],
       ),
       drawer: const DrawerWidget(),
       body: Obx(
@@ -52,7 +63,7 @@ class _HomePageState extends State<HomePage> {
               )
             : RefreshIndicator(
                 onRefresh: () async {
-                  await newsController.getNews();
+
                 },
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(
@@ -65,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                       child: GestureDetector(
                         onTap: () async {
                           Uri url =
-                              Uri.parse(newsController.newsList[item].url);
+                              Uri.parse(newsController.newsList[item].url ?? "");
 
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
@@ -85,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(12),
                                     child: CachedNetworkImage(
                                         imageUrl: newsController
-                                            .newsList[item].urlToImage),
+                                            .newsList[item].urlToImage ?? ""),
                                   ),
                                   subtitle: Column(
                                     children: [
@@ -93,10 +104,10 @@ class _HomePageState extends State<HomePage> {
                                         height: 10,
                                       ),
                                       Text(
-                                        newsController.newsList[item].title,
+                                        newsController.newsList[item].title ?? "No Title",
                                         style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       const SizedBox(
@@ -104,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Text(
                                         newsController
-                                            .newsList[item].description,
+                                            .newsList[item].description ?? "No Title",
                                         style: const TextStyle(
                                           fontSize: 14,
                                         ),

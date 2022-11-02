@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
 
 class DioInterceptor extends Interceptor {
+
   @override
   Future<dynamic> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
@@ -23,15 +23,18 @@ class DioInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
+
+     handler.next(response);
+
     print(
         "<-- ${response.statusCode} ${(response.requestOptions != null ? (response.requestOptions.baseUrl + response.requestOptions.path) : 'URL')}");
     print("Response Headers:");
-    response.headers?.forEach((k, v) => print('$k: $v'));
+    response.headers.forEach((k, v) => print('$k: $v'));
     print("Response: ${response.data}");
   }
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    print("${err.response != null ? err.response?.data : 'Unknown Error'}");
+    print("${err.response != null ? err.response?.data : 'No Data Found'}");
   }
 }
