@@ -11,7 +11,7 @@ class DataService{
         ..interceptors.addAll([
           DioCacheManager(CacheConfig(baseUrl: baseUrl)).interceptor,
         ]);
-      return await dio.get(url2,options: buildCacheOptions(const Duration(days: 7)));
+      return await dio.get(url2,options: buildCacheOptions(const Duration(days: 7),maxStale:const Duration(days: 10)));
     } catch (e) {
       print(e.toString());
     }

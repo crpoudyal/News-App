@@ -14,7 +14,7 @@ class DioService {
           DioCacheManager(CacheConfig(baseUrl: baseUrl)).interceptor,
         ]);
 
-      return await dio.get(url1,options: buildCacheOptions(const Duration(days: 7)));
+      return await dio.get(url1,options: buildCacheOptions(const Duration(days: 7),maxStale:const Duration(days: 10)));
     } catch (e) {
       print(e.toString());
     }
