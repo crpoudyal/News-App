@@ -22,18 +22,20 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text(
-              "News_API",
+              "News Sansar",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10,),
-            CircularProgressIndicator.adaptive(),
+            SizedBox(
+              height: 10,
+            ),
+            LinearProgressIndicator(),
           ],
         ),
       ),
