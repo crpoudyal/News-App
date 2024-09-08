@@ -22,12 +22,12 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Text(
               "News Sansar",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

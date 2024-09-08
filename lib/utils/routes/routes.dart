@@ -6,8 +6,8 @@ class Routes {
   static appRoutes() => [
         GetPage(
             name: RouteNames.splashScreen,
-            page: () => SplashView(),
-            transitionDuration: Duration(milliseconds: 250),
+            page: () => const SplashView(),
+            transitionDuration: const Duration(milliseconds: 250),
             transition: Transition.leftToRightWithFade)
       ];
 }

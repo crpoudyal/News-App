@@ -1,7 +1,5 @@
-import 'package:News_API/services/dio_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:News_API/controller/news_controller.dart';
-import 'package:News_API/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -30,16 +28,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Techcrunch"),
         actions: [
-          TextButton(onPressed: (){
-          Get.to(()=>HomePage());
-          }, child: const Text("Techcrunch")),
-
-          TextButton(onPressed: (){
-            Get.to(()=>DataPage());
-          }, child: const Text("US News"))
+          TextButton(
+              onPressed: () {
+                Get.to(() => const HomePage());
+              },
+              child: const Text("Techcrunch")),
+          TextButton(
+              onPressed: () {
+                Get.to(() => const DataPage());
+              },
+              child: const Text("US News"))
         ],
       ),
-      drawer: const DrawerWidget(),
       body: Obx(
         () => newsController.newsList.isEmpty
             ? Center(
@@ -62,9 +62,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
             : RefreshIndicator(
-                onRefresh: () async {
-
-                },
+                onRefresh: () async {},
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(
                     parent: AlwaysScrollableScrollPhysics(),
@@ -75,8 +73,8 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: GestureDetector(
                         onTap: () async {
-                          Uri url =
-                              Uri.parse(newsController.newsList[item].url ?? "");
+                          Uri url = Uri.parse(
+                              newsController.newsList[item].url ?? "");
 
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
@@ -96,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(12),
                                     child: CachedNetworkImage(
                                         imageUrl: newsController
-                                            .newsList[item].urlToImage ?? ""),
+                                                .newsList[item].urlToImage ??
+                                            ""),
                                   ),
                                   subtitle: Column(
                                     children: [
@@ -104,7 +103,8 @@ class _HomePageState extends State<HomePage> {
                                         height: 10,
                                       ),
                                       Text(
-                                        newsController.newsList[item].title ?? "No Title",
+                                        newsController.newsList[item].title ??
+                                            "No Title",
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
@@ -115,7 +115,8 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Text(
                                         newsController
-                                            .newsList[item].description ?? "No Title",
+                                                .newsList[item].description ??
+                                            "No Title",
                                         style: const TextStyle(
                                           fontSize: 14,
                                         ),
